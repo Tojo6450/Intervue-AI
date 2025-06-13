@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { data } from '../utils/data';
 import {LuSparkles} from 'react-icons/lu'
 import Login from './Auth/Login';
+import SignUp from './Auth/SignUp';
 import Modal from '../components/Modal';
 
 const LandingPage = () => {
@@ -54,14 +55,14 @@ const LandingPage = () => {
         &copy; {new Date().getFullYear()} Interview Prep AI. All rights reserved.
       </footer>
     </div>
-    <Modal isOpen={openAuthModal} onclose={()=>{
+    <Modal isOpen={openAuthModal} onClose={()=>{
         setopenAuthModal(false);
         setCurrentPage("login");
     }} hideHeader
     >
       <div>
         {currentPage === "login" && (<Login setCurrentPage={setCurrentPage} />)}
-        {/* {currentPage === "signup" && (<SignUp setCurrentPage={setCurrentPage} />)} */}
+        {currentPage === "signup" && (<SignUp setCurrentPage={setCurrentPage} />)}
         </div>  
     </Modal>
     

@@ -1,0 +1,52 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env
+
+# Logs
+logs
+*.log
+debug.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Coverage
+coverage/
+
+# Build outputs
+dist/
+build/
+
+# React
+*.local
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Optional: uploads or database dumps
+uploads/
+dump.sql
+
+# Others
+*.tgz
+.cache/
+.parcel-cache/
