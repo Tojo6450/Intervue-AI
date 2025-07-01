@@ -5,14 +5,22 @@ import {LuSparkles} from 'react-icons/lu'
 import Login from './Auth/Login';
 import SignUp from './Auth/SignUp';
 import Modal from '../components/Modal';
+import { useContext } from 'react';
+import { UserContext } from '../context/userContext';
+import ProfileInfoCard from '../components/Cards/ProfileInfoCard';
 
 const LandingPage = () => {
+  const {user} = useContext(UserContext);
   const navigate = useNavigate();
   const [openAuthModal, setopenAuthModal] = useState(false);
   const [currentPage, setCurrentPage] = useState("login");
 
   const handleCTA = () => {
+    if(!user){
     setopenAuthModal(true);
+    } else{
+      navigate("/dashboard");
+    }
   };
 
   return (
@@ -21,12 +29,16 @@ const LandingPage = () => {
       {/* Header */}
       <header className="flex justify-between items-center px-8 py-6 border-b border-gray-700">
         <h1 className="text-2xl font-bold text-indigo-400">Intervue AI</h1>
+        {user ? (
+          <ProfileInfoCard />
+        ) : (
         <button
           className="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-2 rounded-xl font-semibold transition"
           onClick={() => setopenAuthModal(true)}
         >
           Login / Sign Up
         </button>
+        ) } 
       </header>
 
       {/* Hero Section */}

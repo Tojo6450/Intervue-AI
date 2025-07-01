@@ -47,7 +47,7 @@ exports.getMySessions = async(req,res)=>{
     }
 }
 
-exports.getSessionBYId = async(req,res)=>{
+exports.getSessionById = async(req,res)=>{
     try{
       const session = await Session.findById(req.params.id)
       .populate({

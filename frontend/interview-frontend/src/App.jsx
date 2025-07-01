@@ -6,10 +6,12 @@ import Login from "./pages/Auth/Login";
 import SignUp from "./pages/Auth/SignUp";
 import LandinPage from "./pages/LandingPage";
 import Dashboard from "./pages/Home/Dashboard";
+import UserProvider from './context/userContext';
 // import InterviewPrep from "./pages/InterviewPrep/InterviewPrep"
 
 const App=()=>{
   return (
+    <UserProvider>
     <div>
         <Router>
           <Routes>
@@ -25,6 +27,7 @@ const App=()=>{
           {className:"",style:{fontSize:"13px"},}
         }/>
     </div>
+    </UserProvider>
   )
 }
 

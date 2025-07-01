@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Input from "../../components/Inputs/input";
+import { useContext } from "react";
+import { UserContext } from "../../context/userContext";
+import axiosInstance from "../../utils/axiosInstance";
+import { API_PATHS } from "../../utils/apiPaths";
+import { ValidateEmail } from "../../utils/helper";
 
 const SignUp = ({ setCurrentPage }) => {
   const [name, setName] = useState("");
@@ -8,11 +13,12 @@ const SignUp = ({ setCurrentPage }) => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
+  const { updateUser} = useContext(UserContext)
   const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-     
+    
     if(!name){
       setError("please enter a name");
       return;
@@ -28,11 +34,24 @@ const SignUp = ({ setCurrentPage }) => {
         }     
         setError("");
     
-        //login api call
+        //sign api call
         try{
-    
-        }
+          const response = await axiosInstance.post(API_PATHS.AUTH.REGISTER ,{
+            name,
+            email,
+            password,
+          });
+
+          const {token} = response.data;
+
+          if(token){
+            localStorage.setItem("token",token);
+            updateUser(response.data);
+            navigate("/dashboard");
+          }
+        } 
         catch(error){
+           console.error("Signup error:", error);
           if(error.response && error.response.data.message){
             setError(error.response.data.message);
           }
