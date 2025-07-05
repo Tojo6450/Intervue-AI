@@ -12,7 +12,7 @@ const protect= async(req,res,next)=>{
         next();
     }
     else{
-        res.status(401).json({message:"NOT authorized, no tokrn"});
+        res.status(401).json({message:"NOT authorized, no token"});
     }
     }
     catch(error){

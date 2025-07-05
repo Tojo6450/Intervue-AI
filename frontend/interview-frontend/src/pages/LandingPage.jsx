@@ -70,7 +70,7 @@ const LandingPage = () => {
     <Modal isOpen={openAuthModal} onClose={()=>{
         setopenAuthModal(false);
         setCurrentPage("login");
-    }} hideHeader
+    } } hideHeader
     >
       <div>
         {currentPage === "login" && (<Login setCurrentPage={setCurrentPage} />)}

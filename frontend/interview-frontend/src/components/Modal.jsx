@@ -1,16 +1,18 @@
 import React from 'react';
 
-const Modal = ({ isOpen, onClose, children, title, hidddenHeader }) => {
+const Modal = ({ isOpen, onClose, children, title,hidddenHeader,variant }) => {
   if (!isOpen) return null;
 
+  const paddingClass = variant === "dashboard" ? "hover:text-black transition" : "hover:text-white transition";
+  const pd = variant === "dashboard" ? "" : "p-6"
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center  bg-opacity-60 backdrop-blur-sm">
-      <div className="relative bg-gray-900 text-white rounded-lg shadow-lg w-full max-w-md p-6 mx-4">
+      <div className={`relative bg-gray-900 text-white rounded-lg shadow-lg w-full max-w-md mx-4 ${pd}`}>
         {/* Close Button */}
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-white transition"
+          className={`absolute top-4 right-4 text-gray-400 ${paddingClass} `}
           aria-label="Close"
         >
           <svg

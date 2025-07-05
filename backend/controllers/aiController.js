@@ -5,18 +5,19 @@ const ai = new GoogleGenAI({apiKey:process.env.GEMINI_API_KEY});
 //generate interview questions ans answers using gemini
 const generateInterviewQuestions = async(req,res)=>{
     try{
-       const {role, experience,topicstoFocus,numberofQuestions} = req.body;
+       const {role, experience,topicsToFocus,numberofQuestions} = req.body;
 
-       if(!role || !experience || !topicstoFocus || !numberofQuestions){
+       if(!role || !experience || !topicsToFocus || !numberofQuestions){
         return res.status(400).json({message:"Missing required fields"});
        }
-       const prompt = questionAnswerPrompt(role,experience,topicstoFocus,numberofQuestions);
+       const prompt = questionAnswerPrompt(role,experience,topicsToFocus,numberofQuestions);
        const response = await ai.models.generateContent({
-        model:"gemini-1.5-flash",
+        model:"gemini-2.0-flash-lite",
         contents:prompt,
        });
 
        let rawText = response.text;
+       console.log(rawText)
        const cleanedText = rawText.replace(/^```json\s*/,"")
        .replace(/```$/,"").trim();
 
@@ -41,7 +42,7 @@ const generateConceptExplanation = async(req,res)=>{
         contents:prompt,
       })
 
-      let rawText = response.text;
+      let rawText = response.text();
       const cleanedText = rawText.replace(/^```json\s*/,"")
        .replace(/```$/,"").trim();
 

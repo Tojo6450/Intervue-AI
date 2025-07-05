@@ -47,23 +47,25 @@ exports.getMySessions = async(req,res)=>{
     }
 }
 
-exports.getSessionById = async(req,res)=>{
-    try{
-      const session = await Session.findById(req.params.id)
+exports.getSessionById = async (req, res) => {
+  try {
+    const session = await Session.findById(req.params.id)
       .populate({
-        path:"questions",
-        options:{sort:{isPinned:-1,createdAt: 1}},
+        path: "questions",
+        options: { sort: { isPinned: -1, createdAt: 1 } },
       })
       .exec();
 
-      if(!session){
-        return res.status(404).json({success:true,session})
-      }
+    if (!session) {
+      return res.status(404).json({ success: false, message: "Session not found" });
     }
-    catch(error){ 
-        res.status(500).json({success:false,message:"Server Error"});
-    }
-}
+
+    return res.status(200).json({ success: true, session });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Server Error", error: error.message });
+  }
+};
+
 
 exports.deleteSession = async(req,res)=>{
     try{

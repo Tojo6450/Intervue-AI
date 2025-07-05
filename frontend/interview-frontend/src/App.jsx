@@ -7,7 +7,7 @@ import SignUp from "./pages/Auth/SignUp";
 import LandinPage from "./pages/LandingPage";
 import Dashboard from "./pages/Home/Dashboard";
 import UserProvider from './context/userContext';
-// import InterviewPrep from "./pages/InterviewPrep/InterviewPrep"
+import InterviewPrep from "./pages/InterviewPrep/InterviewPrep"
 
 const App=()=>{
   return (
@@ -19,7 +19,7 @@ const App=()=>{
             <Route path="login" element={<Login />}/>
             <Route path="/signup" element={<SignUp />}/> 
              <Route path="/dashboard" element={<Dashboard />}/>
-            {/* <Route path="/interview-prep/:sessionId" element={<InterviewPrep />}/> */}
+            <Route path="/interview-prep/:sessionId" element={<InterviewPrep />}/>
             
           </Routes>
         </Router>
