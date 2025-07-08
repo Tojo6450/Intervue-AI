@@ -1,18 +1,19 @@
 import React from 'react';
 
-const Modal = ({ isOpen, onClose, children, title,hidddenHeader,variant }) => {
+const Modal = ({ isOpen, onClose, children, title, hidddenHeader, variant }) => {
   if (!isOpen) return null;
 
-  const paddingClass = variant === "dashboard" ? "hover:text-black transition" : "hover:text-white transition";
-  const pd = variant === "dashboard" ? "" : "p-6"
+  const paddingClass = variant === "dashboard" ? "hover:text-gray-900 transition" : "hover:text-gray-700 transition";
+  const pd = variant === "dashboard" ? "" : "p-6";
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center  bg-opacity-60 backdrop-blur-sm">
-      <div className={`relative bg-gray-900 text-white rounded-lg shadow-lg w-full max-w-md mx-4 ${pd}`}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/40 backdrop-blur-sm">
+      <div className={`relative bg-white text-gray-800 border border-gray-400 rounded-xl shadow-2xl w-full max-w-md mx-4 ${pd}`}>
         {/* Close Button */}
         <button
           type="button"
           onClick={onClose}
-          className={`absolute top-4 right-4 text-gray-400 ${paddingClass} `}
+          className={`absolute top-4 right-4 text-gray-600 ${paddingClass}`}
           aria-label="Close"
         >
           <svg
@@ -34,7 +35,7 @@ const Modal = ({ isOpen, onClose, children, title,hidddenHeader,variant }) => {
         {/* Optional Header */}
         {!hidddenHeader && title && (
           <div className="mb-4">
-            <h3 className="text-xl font-semibold text-indigo-400">{title}</h3>
+            <h3 className="text-xl font-semibold text-indigo-600">{title}</h3>
           </div>
         )}
 

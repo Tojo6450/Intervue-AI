@@ -38,7 +38,7 @@ const CreateSessionForm = () => {
         role,
         experience,
         topicsToFocus,
-        numberofQuestions: 2,
+        numberofQuestions: 7,
       });
 
       const generatedQuestions = aiResponse.data;

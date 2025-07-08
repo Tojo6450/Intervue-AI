@@ -54,8 +54,8 @@ const Login = ({ setCurrentPage }) => {
 
   return (
     <div className="w-full max-w-md mx-auto text-white">
-      <h3 className="text-2xl font-bold text-center text-indigo-400">Welcome Back</h3>
-      <p className="text-center text-sm text-gray-400 mt-1">
+      <h3 className="text-2xl font-bold text-center text-indigo-900">Welcome Back</h3>
+      <p className="text-center text-sm text-gray-800 mt-1">
         Please enter your details to log in
       </p>
 
@@ -88,10 +88,10 @@ const Login = ({ setCurrentPage }) => {
         </button>
       </form>
 
-      <div className="mt-4 text-sm text-gray-400 text-center">
+      <div className="mt-4 text-sm text-gray-700 text-center">
         Don’t have an account?{" "}
         <button
-          className="text-indigo-400 hover:underline font-semibold"
+          className="text-indigo-900 hover:underline font-semibold"
           type="button"
           onClick={() => setCurrentPage("signup")}
         >

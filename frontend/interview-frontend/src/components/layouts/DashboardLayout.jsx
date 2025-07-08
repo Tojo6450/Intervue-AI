@@ -6,7 +6,7 @@ const DashboardLayout = ({ children }) => {
   const { user } = useContext(UserContext);
 
   return (
-    <div>
+    <div >
       <Navbar />
       {user && <div>{children}</div>}
     </div>

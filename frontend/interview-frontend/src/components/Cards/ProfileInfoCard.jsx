@@ -17,7 +17,7 @@ const ProfileInfoCard = () => {
   return (
     <div className="flex items-center space-x-3">
       <img
-        src="vite.svg"
+        src="/profilepic.jpg"
         alt="Profile"
         className="w-11 h-11 bg-gray-300 rounded-full"
       />

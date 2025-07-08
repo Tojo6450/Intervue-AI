@@ -61,8 +61,8 @@ const SignUp = ({ setCurrentPage }) => {
 
   return (
     <div>
-      <h3 className="text-2xl font-semibold text-white">Create an Account</h3>
-      <p className="text-sm text-gray-400 mt-1">Please fill in your details to sign up</p>
+      <h3 className="text-2xl font-semibold text-indigo-900">Create an Account</h3>
+      <p className="text-sm text-gray-700 mt-1">Please fill in your details to sign up</p>
 
       <form onSubmit={handleSignUp} className="mt-6 space-y-4">
         {error && (
@@ -101,10 +101,10 @@ const SignUp = ({ setCurrentPage }) => {
         </button>
       </form>
 
-      <div className="mt-4 text-sm text-gray-400 text-center">
+      <div className="mt-4 text-sm text-gray-800 text-center">
         Already have an account?{" "}
         <button
-          className="text-indigo-400 hover:underline font-semibold"
+          className="text-indigo-900 hover:underline font-semibold"
           type="button"
           onClick={() => setCurrentPage("login")}
         >

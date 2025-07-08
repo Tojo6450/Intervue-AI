@@ -17,7 +17,7 @@ const generateInterviewQuestions = async(req,res)=>{
        });
 
        let rawText = response.text;
-       console.log(rawText)
+      //  console.log(rawText)
        const cleanedText = rawText.replace(/^```json\s*/,"")
        .replace(/```$/,"").trim();
 
@@ -42,7 +42,7 @@ const generateConceptExplanation = async(req,res)=>{
         contents:prompt,
       })
 
-      let rawText = response.text();
+      let rawText = response.text;
       const cleanedText = rawText.replace(/^```json\s*/,"")
        .replace(/```$/,"").trim();
 

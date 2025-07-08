@@ -10,7 +10,7 @@
     font-family: var(--font-display);
   }
   body{
-    background-color: #fcfbfc;
+    background-color: #fcfcfc;
     overflow-x:hidden;
   }
 }
@@ -36,4 +36,26 @@
 
 .btn-small{
   @apply flex items-center justify-center gap-3 bg-linear-to-r from-[#FF9324] to-[#e99a4b] text-sm font-semibold text-white px-7 py-2 rounded-lg hover:bg-black hover:text-white transition-colors cursor-pointer hover:text-white transition-colors cursor-pointer hover:shadow-2xl hover:shadow-orange-300;
+}
+@keyframes blob1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(20px, -10px) scale(1.1); }
+}
+@keyframes blob2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-15px, 20px) scale(1.05); }
+}
+@keyframes blob3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(10px, 15px) scale(1.08); }
+}
+
+.animate-blob1 {
+  animation: blob1 8s infinite ease-in-out;
+}
+.animate-blob2 {
+  animation: blob2 6s infinite ease-in-out;
+}
+.animate-blob3 {
+  animation: blob3 7s infinite ease-in-out;
 }

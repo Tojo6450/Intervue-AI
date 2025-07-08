@@ -8,7 +8,9 @@ import moment from 'moment';
 import DashboardLayout from '../../components/layouts/DashboardLayout';
 import Modal from '../../components/Modal';
 import CreateSessionForm from './CreateSessionForm';
-import Summarycard from '../../components/Cards/Summarycard'; // Make sure it's imported
+import Summarycard from '../../components/Cards/Summarycard';
+import DeleteAlertContent from '../../components/DeleteAlertContent';
+import toast from 'react-hot-toast';
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -30,7 +32,18 @@ function Dashboard() {
   };
 
   const deleteSession = async (sessionData) => {
-    // You can implement delete logic here
+     try{
+      await axiosInstance.delete(API_PATHS.SESSION.DELETE(sessionData?._id));
+
+      toast.success("Session Deleted Successfully");
+      setOpenDeleteAlert({
+        open: false,
+        data: null,
+      });
+      fetchAllSessions();
+     } catch(error){
+      console.error("Error deleting session data:", error);
+     }
   };
 
   useEffect(() => {
@@ -39,8 +52,8 @@ function Dashboard() {
 
   return (
     <DashboardLayout>
-      <div className="container mx-auto pt-4 pb-4">
-        <div className="grid grid-cols-3 md:grid-cols-3 gap-7 md:gap-7 pt-1 pb-6 px-4">
+      <div className="container mx-auto pt-4 pb-4 ">
+        <div className="grid grid-rows-3 md:grid-cols-3 gap-7 md:gap-7 pt-1 pb-6 px-4">
           {sessions?.map((data, index) => (
             <Summarycard
               key={data?._id}
@@ -62,17 +75,17 @@ function Dashboard() {
         </div>
 
         {/* Add Button */}
-        <div className="flex justify-center mt-4">
-          <button
-            onClick={() => setOpenCreateModal(true)}
-            className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md flex items-center gap-2 transition"
-          >
-            <LuPlus className="text-lg" />
-            Add New
-          </button>
-        </div>
+      <div className="fixed bottom-8 right-8 z-40">
+        <button
+          onClick={() => setOpenCreateModal(true)}
+          className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-full flex items-center gap-2 shadow-lg transition"
+        >
+          <LuPlus className="text-lg" />
+          Add New
+        </button>
       </div>
-
+            
+      </div>
       {/* Modal for Creating Session */}
       <Modal
         isOpen={openCreateModal}
@@ -84,6 +97,21 @@ function Dashboard() {
           <CreateSessionForm />
         </div>
       </Modal>
+
+      <Modal 
+         isOpen={openDeleteAlert?.open}
+         onClose={()=>{
+          setOpenDeleteAlert({open : false,data:null});
+         }}
+         title="Delete Alert"
+         >
+         <div className="w-[30vw]">
+          <DeleteAlertContent
+            content="Are you sure want to delete this session detail?"
+            onDelete={()=> deleteSession(openDeleteAlert.data)}
+           />
+          </div> 
+         </Modal>
     </DashboardLayout>
   );
 }
