@@ -64,20 +64,43 @@ const InterviewPrep = ()=>{
        }
     };
 
-    const toggleQuestionPinStatus = async(questionId)=>{
-       try{
-         const response = await axiosInstance.post(
-            API_PATHS.QUESTION.PIN(questionId)
-         );
+    const toggleQuestionPinStatus = async (questionId) => {
+  setSessionData((prevSession) => {
+    if (!prevSession) return prevSession;
 
-        //  console.log(response);
-         if(response.data && response.data.question){
-            fetchSessionDetailsById();
-         }
-       } catch(error){
-         console.log("Error", error);
-       }
-    };
+    const updatedQuestions = prevSession.questions.map((q) =>
+      q._id === questionId ? { ...q, isPinned: !q.isPinned } : q
+    );
+
+    const sortedQuestions = [...updatedQuestions].sort((a, b) => {
+      if (a.isPinned === b.isPinned) return 0;
+      return a.isPinned ? -1 : 1;
+    });
+
+    return { ...prevSession, questions: sortedQuestions };
+  });
+
+  try {
+    await axiosInstance.post(API_PATHS.QUESTION.PIN(questionId));
+  } catch (error) {
+    console.log("Error", error);
+    toast.error("Failed to pin/unpin question");
+    setSessionData((prevSession) => {
+      if (!prevSession) return prevSession;
+
+      const rolledBackQuestions = prevSession.questions.map((q) =>
+        q._id === questionId ? { ...q, isPinned: !q.isPinned } : q
+      );
+
+      const sortedRollback = [...rolledBackQuestions].sort((a, b) => {
+        if (a.isPinned === b.isPinned) return 0;
+        return a.isPinned ? -1 : 1;
+      });
+
+      return { ...prevSession, questions: sortedRollback };
+    });
+  }
+};
 
     const uploadMoreQuestions = async()=>{
        try{
