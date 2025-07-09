@@ -35,23 +35,25 @@ exports.addQuestionsToSession = async (req, res) => {
   }
 };
 
-
-exports.togglePinQuestion = async (req,res) =>{
-    try{
-       const question = await Question.findById(req.params.id);
-       
-       if(!question){
-        return res.status(404).json({success:false, message:"Question not found"});
-       }
-
-       question.isPinned = !question.isPinned;
-       await question.save();
-
-       res.status(200).json({success:true,question});
-    }catch(err){
-        res.status(500).json({message:"Server Error"})
+exports.togglePinQuestion = async (req, res) => {
+  try {
+    const question = await Question.findById(req.params.id);
+    
+    if (!question) {
+      return res.status(404).json({ success: false, message: "Question not found" });
     }
-}
+
+    const updatedQuestion = await Question.findByIdAndUpdate(
+      req.params.id,
+      { isPinned: !question.isPinned },
+      { new: true }
+    );
+
+    res.status(200).json({ success: true, question: updatedQuestion });
+  } catch (err) {
+    res.status(500).json({ message: "Server Error" });
+  }
+};
 
 
 
