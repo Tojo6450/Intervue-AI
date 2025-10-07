@@ -35,7 +35,7 @@ const Login = ({ setCurrentPage }) => {
         email,
         password,
        });
-
+       console.log(response.data)
        const {token} = response.data;
        if(token){
         localStorage.setItem("token",token);
@@ -48,7 +48,7 @@ const Login = ({ setCurrentPage }) => {
       if(error.response && error.response.data.message){
         setError(error.response.data.message);
       }
-      else setError("Something went wrong. please try again later");
+      else setError("Something went wrongs. please try again later");
     }
   };
 
