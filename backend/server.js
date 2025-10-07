@@ -37,7 +37,7 @@ app.use("/api/ai/generate-explanation",protect,generateConceptExplanation);
 //serve uploaads folder
 app.use("/uploads",express.static(path.join(__dirname,"uploads"),{}));
 
-const PORT= process.env.PORT || 5000;
+const PORT= 5000;
 app.listen(PORT,()=>{
     console.log(`server is running at port ${PORT}`);
 })
