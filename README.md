@@ -11,3 +11,12 @@ Your personalized interview preparation assistant – generate role-specific que
 🔒 User Authentication: Secure sign-up/login with JWT.
 
 🧑‍💼 Session Tracking: Save sessions with context like role, experience, and focus areas.
+
+
+## 📸 Screenshots
+
+### Dashboard
+![Dashboard Screenshot](./frontend/interview-frontend/public/Dashboard.png)
+
+### Session Tracking
+![Q&A Screenshot](./frontend/interview-frontend/public/Q&A.png)
