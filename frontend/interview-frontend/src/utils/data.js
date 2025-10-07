@@ -1,5 +1,5 @@
 export const CARD_BG = [
-  { id: 1, bgcolor: 'linear-gradient(134deg,rgb(187, 225, 214) 0%,rgb(217, 245, 234) 100%)' },
+  { id: 1, bgcolor: 'linear-gradient(135deg,rgb(187, 225, 214) 0%,rgb(217, 245, 234) 100%)' },
   { id: 2, bgcolor: 'linear-gradient(135deg,rgb(228, 221, 195) 0%,rgb(242, 235, 198) 100%)' },
   { id: 3, bgcolor: 'linear-gradient(135deg,rgb(197, 220, 232) 0%, #f3fbff 100%)' },
   { id: 4, bgcolor: 'linear-gradient(135deg,rgb(234, 214, 199) 0%, #fff8f3 100%)' },
