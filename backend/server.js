@@ -13,12 +13,13 @@ const app = express()
 
 ///middleware to handle cors
 app.use(
-    cors({
-        origin:"https://intervue-ai-smoky.vercel.app",
-        methods:["GET","POST","PUT","DELETE"],
-        allowedHeaders:["content-Type","Authorization"],
-    })
-)
+  cors({
+    origin: ["http://localhost:5173", "https://intervue-ai-smoky.vercel.app"],
+    methods: ["GET","POST","PUT","DELETE"],
+    allowedHeaders: ["Content-Type","Authorization"],
+  })
+);
+
 
 connectDB()
 // middleware
