@@ -14,7 +14,7 @@ const app = express()
 ///middleware to handle cors
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://intervue-ai-smoky.vercel.app"],
+    origin: ["http://localhost:5173", "https://intervue-ai-roan.vercel.app"],
     methods: ["GET","POST","PUT","DELETE"],
     allowedHeaders: ["Content-Type","Authorization"],
   })
