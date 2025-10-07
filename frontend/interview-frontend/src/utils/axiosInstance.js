@@ -31,9 +31,10 @@ axiosInstance.interceptors.response.use(
     },
     (error)=>{
         if(error.response){
-            if(error.response.status === 401){
-                window.location.href ="/";
-            }
+            if (error.response.status === 401) {
+    localStorage.removeItem("token");
+  }
+
             else if(error.response.status==500){
                 console.log("Server error,please try again later.");
             }
